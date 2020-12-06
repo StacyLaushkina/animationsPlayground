@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Animations playground</string>
+
+    <string name="drawable_animations">Drawable animations</string>
+</resources>
