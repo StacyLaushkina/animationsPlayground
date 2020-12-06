@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_drawable_animations.*
 
 class DrawableAnimations : AppCompatActivity() {
     private lateinit var clockAnimation: AnimationDrawable
+    private lateinit var humanAnimation: AnimationDrawable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,4 +24,11 @@ class DrawableAnimations : AppCompatActivity() {
         }
     }
     // TODO save instance - animation stops after rotation!
+
+    override fun onStart() {
+        super.onStart()
+        // Cannot start it in onCreate()
+        humanAnimation = human_animation.background as AnimationDrawable
+        humanAnimation.start()
+    }
 }
