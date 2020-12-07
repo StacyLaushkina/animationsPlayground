@@ -3,39 +3,45 @@ package com.laushkina.animationsplayground
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import kotlinx.android.synthetic.main.activity_crossfade_animations.*
 
-class CrossFadeAnimationsActivity : AppCompatActivity() {
-    private var shortAnimationDuration: Int = 0
+class CrossFadeAnimationsActivity : FragmentActivity() {
+    private var showingBack = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crossfade_animations)
 
-        hidden_human.visibility = View.GONE
-        shortAnimationDuration = resources.getInteger(android.R.integer.config_longAnimTime)
-
-        open_me_text.setOnClickListener { crossfade(open_me_text, hidden_human) }
-        hidden_human.setOnClickListener { crossfade(hidden_human, open_me_text) }
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.container, CrossFadeFrontFragment())
+                .commit()
+        }
+        container.setOnClickListener {
+            flipCard()
+        }
     }
 
-    private fun crossfade(from: View, to: View) {
-        to.apply {
-            // Transparent at first
-            alpha = 0f
-            // But visible during animation
-            visibility = View.VISIBLE
-
-            animate()
-                .alpha(1f)
-                .duration = shortAnimationDuration.toLong()
+    private fun flipCard() {
+        val fragment: Fragment
+        if (showingBack) {
+            fragment = CrossFadeBackFragment() // TODO reuse fragments
+            showingBack = false
+        } else {
+            fragment = CrossFadeFrontFragment()
+            showingBack = true
         }
 
-        from.apply {
-            animate()
-                .alpha(0f)
-                .duration = shortAnimationDuration.toLong()
-
-        }
+        supportFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.animator.card_flip_right_in,
+                R.animator.card_flip_right_out,
+                R.animator.card_flip_left_in,
+                R.animator.card_flip_left_out
+            )
+            .replace(R.id.container, fragment)
+            .commit()
     }
 }
