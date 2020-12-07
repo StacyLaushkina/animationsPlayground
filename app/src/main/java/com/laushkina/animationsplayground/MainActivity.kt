@@ -11,7 +11,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         drawable_animations.setOnClickListener {
-            val intent = Intent(this, DrawableAnimations::class.java)
+            val intent = Intent(this, DrawableAnimationsActivity::class.java)
+            startActivity(intent)
+        }
+
+        crossfade_animations.setOnClickListener {
+            val intent = Intent(this, CrossFadeAnimationsActivity::class.java)
             startActivity(intent)
         }
     }

@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_drawable_animations.*
 
-class DrawableAnimations : AppCompatActivity() {
+class DrawableAnimationsActivity : AppCompatActivity() {
     private lateinit var clockAnimation: AnimationDrawable
     private lateinit var humanAnimation: AnimationDrawable
 
