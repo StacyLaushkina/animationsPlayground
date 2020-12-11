@@ -19,5 +19,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CrossFadeAnimationsActivity::class.java)
             startActivity(intent)
         }
+
+        value_animations.setOnClickListener {
+            val intent = Intent(this, ValueAnimatorActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

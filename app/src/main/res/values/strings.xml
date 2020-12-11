@@ -3,4 +3,5 @@
 
     <string name="drawable_animations">Drawable animations</string>
     <string name="crossfade_animations">Crossfade animations</string>
+    <string name="value_animations">Value animations</string>
 </resources>

@@ -21,4 +21,10 @@
         android:layout_height="wrap_content"
         android:text="@string/crossfade_animations"/>
 
+    <Button
+        android:id="@+id/value_animations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/value_animations"/>
+
 </LinearLayout>
