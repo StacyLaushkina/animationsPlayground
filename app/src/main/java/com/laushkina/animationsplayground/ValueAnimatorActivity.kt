@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.PathInterpolator
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_value_animations.*
 
@@ -22,6 +21,8 @@ class ValueAnimatorActivity: AppCompatActivity()  {
 
     override fun onStart() {
         super.onStart()
+        custom_views_container.addView(ChangingSizeCutomView(this))
+
         animateNavigationBarColor()
     }
 
